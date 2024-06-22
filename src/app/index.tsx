@@ -5,7 +5,7 @@ import Splash from './splash'
 import Signin from './signin'
 
 const Index = () => {
-  return <Signin/>
+  return <Splash/>
 }
 
 export default Index

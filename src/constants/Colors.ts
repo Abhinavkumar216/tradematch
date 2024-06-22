@@ -83,15 +83,15 @@ export const Colors = {
     text1: "#697584",
     text2: "#263A50",
     tint: tintColor,
-    Surface1: "#FFFFFF ",
-    Surface2: "#F4F4F4",
+    Surface1: "#fff ",
+    Surface2: "#EAEBED",
     ...MyColors,
   },
 
   dark: {
     text1: "#F4F4F4",
     text2: "#EAEBED",
-    Surface1: "#222232",
+    Surface1: "#263A50",
     Surface2: "#101924",
     tint: tintColor,
     ...MyColors,

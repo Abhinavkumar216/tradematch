@@ -2,6 +2,7 @@ import { ThemedText2 } from "@/src/components/ThemedText";
 import { ThemedSurface2 } from "@/src/components/ThemedView";
 import { Colors } from "@/src/constants/Colors";
 import { Fonts } from "@/src/constants/Fonts";
+import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import {
@@ -13,7 +14,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import Animated, {
-    Easing,
+  Easing,
   FadeInDown,
   useAnimatedStyle,
   useSharedValue,
@@ -44,6 +45,7 @@ const Start = () => {
   const onStarted = () => {
     setLoading(true);
     setTimeout(() => {
+      router.push("/signin");
       setLoading(false);
     }, 1500);
   };
@@ -70,7 +72,11 @@ const Start = () => {
         </View>
       </Animated.View>
 
-      <Animated.View entering={FadeInDown.delay(2000).duration(1000).easing(Easing.elastic(0.5))}>
+      <Animated.View
+        entering={FadeInDown.delay(2000)
+          .duration(1000)
+          .easing(Easing.elastic(0.5))}
+      >
         <ThemedText2 style={styles.logoheading}>
           Welcome to TradeMatch!
         </ThemedText2>

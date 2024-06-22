@@ -1,20 +1,27 @@
-import { View, type ViewProps } from 'react-native';
+import { View, type ViewProps } from "react-native";
 
-import { useThemeColor } from '@/src/hooks/useThemeColor';
+import { useThemeColor } from "@/src/hooks/useThemeColor";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../redux/features/theme/themeSlice";
+import { Colors } from "../constants/Colors";
+import Animated from "react-native-reanimated";
 
 export type ThemedViewProps = ViewProps & {
   lightColor?: string;
   darkColor?: string;
 };
 
+export function ThemedSurface2({ style, ...otherProps }: ThemedViewProps) {
+  const darkMode = useSelector(selectTheme);
 
-export function ThemedSurface2({ style, lightColor, darkColor, ...otherProps }: ThemedViewProps) {
-  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'Surface2');
+  const backgroundColor = Colors[darkMode ? "dark" : "light"]["Surface2"];
 
-  return <View style={[{ backgroundColor }, style]} {...otherProps} />;
+  return <Animated.View style={[{ backgroundColor }, style]} {...otherProps} />;
 }
-export function ThemedSurface1({ style, lightColor, darkColor, ...otherProps }: ThemedViewProps) {
-  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'Surface1');
+export function ThemedSurface1({ style, ...otherProps }: ThemedViewProps) {
+  const darkMode = useSelector(selectTheme);
 
-  return <View style={[{ backgroundColor }, style]} {...otherProps} />;
+  const backgroundColor = Colors[darkMode ? "dark" : "light"]["Surface1"];
+
+  return <Animated.View style={[{ backgroundColor }, style]} {...otherProps} />;
 }
