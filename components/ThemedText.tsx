@@ -8,24 +8,50 @@ export type ThemedTextProps = TextProps & {
   type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
 };
 
-export function ThemedText({
+export function ThemedText1({
   style,
   lightColor,
   darkColor,
   type = 'default',
   ...rest
 }: ThemedTextProps) {
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+  
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text1');
 
   return (
     <Text
       style={[
         { color },
-        type === 'default' ? styles.default : undefined,
-        type === 'title' ? styles.title : undefined,
-        type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
-        type === 'subtitle' ? styles.subtitle : undefined,
-        type === 'link' ? styles.link : undefined,
+        // type === 'default' ? styles.default : undefined,
+        // type === 'title' ? styles.title : undefined,
+        // type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
+        // type === 'subtitle' ? styles.subtitle : undefined,
+        // type === 'link' ? styles.link : undefined,
+        style,
+      ]}
+      {...rest}
+    />
+  );
+}
+export function ThemedText2({
+  style,
+  lightColor,
+  darkColor,
+  type = 'default',
+  ...rest
+}: ThemedTextProps) {
+  
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text2');
+
+  return (
+    <Text
+      style={[
+        { color },
+        // type === 'default' ? styles.default : undefined,
+        // type === 'title' ? styles.title : undefined,
+        // type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
+        // type === 'subtitle' ? styles.subtitle : undefined,
+        // type === 'link' ? styles.link : undefined,
         style,
       ]}
       {...rest}
