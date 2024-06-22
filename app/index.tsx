@@ -1,24 +1,66 @@
-import { ThemedText1 } from "@/components/ThemedText";
+import { ThemedText1, ThemedText2 } from "@/components/ThemedText";
 import { ThemedSurface2 } from "@/components/ThemedView";
 import { Fonts } from "@/constants/Fonts";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import React, { useEffect } from "react";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
+import Animated, {
+  FadeInDown,
+  useAnimatedStyle,
+  useSharedValue,
+  withDelay,
+  withSpring,
+  withTiming,
+} from "react-native-reanimated";
 
+const Size = 200;
 const index = () => {
+  const imageSize = useSharedValue(Size);
+  const translateX = useSharedValue<number>(0);
+
+  const handlePress = () => {
+    imageSize.value = 65;
+    translateX.value -= 45;
+  };
+
+
+  const imageAnimatedStyles = useAnimatedStyle(() => ({
+    width: withTiming(imageSize.value, { duration: 1000 }),
+    height: withTiming(imageSize.value, { duration: 1000 }),
+    transform: [
+      { translateX: withTiming(translateX.value * 2, { duration: 1000 }) },
+    ],
+  }));
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      handlePress();
+    }, 3000);
+  }, []);
+
+
   return (
     <ThemedSurface2 style={styles.container}>
       <StatusBar style="auto" />
-      <Image
-        source={require("../assets/images/verified-blue.png")}
-        style={styles.image}
-      />
-      <View>
-        <ThemedText1 style={styles.heading}>Tradematch</ThemedText1>
-        <ThemedText1 style={styles.subheading}>
-          Trade For Every Match
-        </ThemedText1>
-      </View>
+        <Animated.Image
+          source={require("../assets/images/verified-blue.png")}
+          style={[styles.image, imageAnimatedStyles]}
+        />
+        <Animated.View style={{ marginRight: -65 }}>
+          <Animated.Text
+            entering={FadeInDown.delay(3200).duration(1000)}
+            style={[styles.heading, { color: "#fff" }]}
+          >
+            Tradematch
+          </Animated.Text>
+          <Animated.Text
+            entering={FadeInDown.delay(3200).duration(1000)}
+            style={[styles.subheading, { color: "#fff" }]}
+          >
+            Trade For Every Match
+          </Animated.Text>
+        </Animated.View>
     </ThemedSurface2>
   );
 };
@@ -30,13 +72,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: "row",
+    // flexDirection: "row",
   },
   heading: {
     fontSize: 24,
     fontFamily: Fonts.SemiBold,
     textAlign: "center",
+    // display: "none",
   },
-  image: { width: 50, height: 50, marginRight: 10 },
+  image: { width: 65, height: 65, position:'absolute' },
   subheading: { fontSize: 14, fontFamily: Fonts.Light },
 });
