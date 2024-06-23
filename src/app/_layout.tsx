@@ -11,8 +11,6 @@ import { useColorScheme } from "react-native";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-
-   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     // SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     PoppinsBold: require("../assets/fonts/Poppins-Bold.ttf"),
@@ -29,7 +27,6 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
-
   if (!loaded) {
     return null;
   }
@@ -41,6 +38,7 @@ export default function RootLayout() {
         <Stack.Screen name="start" options={{ headerShown: false }} />
         <Stack.Screen name="splash" options={{ headerShown: false }} />
         <Stack.Screen name="signin" options={{ headerShown: false }} />
+        <Stack.Screen name="verification" options={{ headerShown: false }} />
       </Stack>
     </Provider>
   );

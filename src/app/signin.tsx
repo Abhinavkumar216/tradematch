@@ -22,6 +22,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../redux/features/theme/themeSlice";
+import { router } from "expo-router";
 
 const statusBarHeight = Constants.statusBarHeight;
 
@@ -38,7 +39,7 @@ const Signin = () => {
   const onStarted = () => {
     setLoading(true);
     setTimeout(() => {
-      // router.push("/signin");
+      router.push("/verification");
       setLoading(false);
     }, 1500);
   };
@@ -100,7 +101,7 @@ const Signin = () => {
               color: theming,
             },
           ]}
-          placeholderTextColor={theming}
+          placeholderTextColor={theming+80}
           placeholder="Mobile Number"
           dataDetectorTypes={"phoneNumber"}
           keyboardType="phone-pad"
@@ -142,8 +143,8 @@ const Signin = () => {
               color: theming,
             },
           ]}
-          placeholderTextColor={theming}
-          placeholder="Refer code"
+          placeholderTextColor={theming+80}
+          placeholder="Referral code"
           dataDetectorTypes={"phoneNumber"}
           keyboardType="phone-pad"
           cursorColor={theming}

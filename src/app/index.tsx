@@ -3,9 +3,10 @@ import React from 'react'
 import Start from './start'
 import Splash from './splash'
 import Signin from './signin'
+import Verification from './verification'
 
 const Index = () => {
-  return <Splash/>
+  return <Splash />
 }
 
 export default Index
