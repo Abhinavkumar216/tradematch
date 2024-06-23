@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Start from './start'
+import { StyleSheet } from 'react-native'
 import Splash from './splash'
-import Signin from './signin'
-import Verification from './verification'
+import Start from './(auth)/start'
+import Login from './(auth)/login'
+import Verify from './(auth)/verify'
 
 const Index = () => {
-  return <Splash />
+  return <Verify/>
 }
 
 export default Index

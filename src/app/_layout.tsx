@@ -1,25 +1,34 @@
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useMemo } from "react";
+import { useColorScheme } from "react-native";
 import "react-native-reanimated";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components/native";
+import { DarkTheme, DefaultTheme, Font, LightTheme } from "../constants/theme";
 import { store } from "../redux/Store";
-import { useColorScheme } from "react-native";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const colorScheme = useColorScheme();
+
   const [loaded] = useFonts({
     // SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-    PoppinsBold: require("../assets/fonts/Poppins-Bold.ttf"),
-    PoppinsMedium: require("../assets/fonts/Poppins-Medium.ttf"),
-    PoppinsSemiBold: require("../assets/fonts/Poppins-SemiBold.ttf"),
-    PoppinsRegular: require("../assets/fonts/Poppins-Regular.ttf"),
-    PoppinsLight: require("../assets/fonts/Poppins-Light.ttf"),
-    PoppinsThin: require("../assets/fonts/Poppins-Thin.ttf"),
+    [Font.Bold]: require("../assets/fonts/Poppins-Bold.ttf"),
+    [Font.Medium]: require("../assets/fonts/Poppins-Medium.ttf"),
+    [Font.SemiBold]: require("../assets/fonts/Poppins-SemiBold.ttf"),
+    [Font.Regular]: require("../assets/fonts/Poppins-Regular.ttf"),
+    [Font.Light]: require("../assets/fonts/Poppins-Light.ttf"),
+    [Font.Thin]: require("../assets/fonts/Poppins-Thin.ttf"),
   });
+
+  const theme = useMemo(() => {
+    if (!colorScheme) return DefaultTheme;
+    return colorScheme === "dark" ? DarkTheme : LightTheme;
+  }, [colorScheme]);
 
   useEffect(() => {
     if (loaded) {
@@ -32,14 +41,16 @@ export default function RootLayout() {
   }
 
   return (
-    <Provider store={store}>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="start" options={{ headerShown: false }} />
-        <Stack.Screen name="splash" options={{ headerShown: false }} />
-        <Stack.Screen name="signin" options={{ headerShown: false }} />
-        <Stack.Screen name="verification" options={{ headerShown: false }} />
-      </Stack>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <Stack screenOptions={{ headerShown: false }}>
+          {/* <Stack.Screen name="(auth)" /> */}
+          {/* <Stack.Screen name="splash" /> */}
+          {/* <Stack.Screen name="start" /> */}
+          {/* <Stack.Screen name="signin" /> */}
+          {/* <Stack.Screen name="verification" /> */}
+        </Stack>
+      </Provider>
+    </ThemeProvider>
   );
 }
