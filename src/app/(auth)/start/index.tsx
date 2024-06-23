@@ -42,7 +42,7 @@ const Start = () => {
   const onStarted = () => {
     setLoading(true);
     setTimeout(() => {
-      //   router.push("/signin");
+        router.push("/login");
       setLoading(false);
     }, 1500);
   };
@@ -68,7 +68,7 @@ const Start = () => {
         <LogoSubHeading>Start you Journey in 2 Simple Steps</LogoSubHeading>
       </Animated.View>
       <View style={{ flex: 1 }} />
-      <StyledButton entering={FadeInDown.delay(2500).duration(1000)}>
+      <StyledButton entering={FadeInDown.delay(2500).duration(1000)} onPress={onStarted}>
         {loading ? (
           <ActivityIndicator size={"small"} color={"#fff"} />
         ) : (

@@ -44,11 +44,7 @@ export default function RootLayout() {
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <Stack screenOptions={{ headerShown: false }}>
-          {/* <Stack.Screen name="(auth)" /> */}
-          {/* <Stack.Screen name="splash" /> */}
-          {/* <Stack.Screen name="start" /> */}
-          {/* <Stack.Screen name="signin" /> */}
-          {/* <Stack.Screen name="verification" /> */}
+          <Stack.Screen name="splash/index" />
         </Stack>
       </Provider>
     </ThemeProvider>

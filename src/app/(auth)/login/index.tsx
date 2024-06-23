@@ -2,24 +2,25 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import React, { useContext, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 import {
-    useAnimatedStyle,
-    useSharedValue,
-    withTiming
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
 } from "react-native-reanimated";
 import { ThemeContext } from "styled-components/native";
 import {
-    AnimatedImage,
-    ButtonText,
-    Container,
-    CountryCode,
-    HorizontalView,
-    InputStyle,
-    InputWrapper,
-    LogoHeading,
-    LogoSubHeading,
-    ReferButton,
-    StyledButton,
+  AnimatedImage,
+  ButtonText,
+  Container,
+  CountryCode,
+  HorizontalView,
+  InputStyle,
+  InputWrapper,
+  LogoHeading,
+  LogoSubHeading,
+  ReferButton,
+  StyledButton,
 } from "./styles";
+import { router } from "expo-router";
 
 const Login = () => {
   const themeContext = useContext(ThemeContext);
@@ -34,7 +35,7 @@ const Login = () => {
   const onStarted = () => {
     setLoading(true);
     setTimeout(() => {
-      //   router.push("/verification");
+      router.push("/verify");
       setLoading(false);
     }, 1500);
   };
@@ -118,7 +119,7 @@ const Login = () => {
         />
       </InputWrapper>
       <View style={{ flex: 1 }} />
-      <LogoSubHeading style={{fontSize:12}}>
+      <LogoSubHeading style={{ fontSize: 12 }}>
         By Proceeding, I agree to the T&C and Privacy Policy.
       </LogoSubHeading>
       <StyledButton onPress={onStarted}>

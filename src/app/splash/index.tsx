@@ -12,6 +12,7 @@ import {
   HorizontalView,
   SubHeading,
 } from "./styles";
+import { router } from "expo-router";
 
 const Splash = () => {
   const imageSize = useSharedValue<number>(200);
@@ -34,6 +35,12 @@ const Splash = () => {
     setTimeout(() => {
       handlePress();
     }, 1000);
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      router.push("/start");
+    }, 3000);
   }, []);
 
   return (
