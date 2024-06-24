@@ -6,7 +6,7 @@ import Login from "./(auth)/login";
 import Verify from "./(auth)/verify";
 
 const Index = () => {
-  return <Splash />;
+  return <Verify/>
 };
 
 export default Index;

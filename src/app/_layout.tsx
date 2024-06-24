@@ -44,7 +44,7 @@ export default function RootLayout() {
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="splash/index" />
+          {/* <Stack.Screen name="splash/index" /> */}
         </Stack>
       </Provider>
     </ThemeProvider>

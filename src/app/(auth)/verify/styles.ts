@@ -27,10 +27,15 @@ export const LogoHeading = styled.Text<TextProps>`
   font-family: ${({ theme }) => theme.typography.fontFamily.semiBold};
 `;
 
-export const LogoSubHeading = styled.Text<TextProps>`
+export const LogoSubHeading = styled(Animated.Text)<TextProps>`
   font-family: ${({ theme }) => theme.typography.fontFamily.light};
   font-size: ${({ theme }) => theme.typography.sizes.font14}px;
   color: ${({ theme }) => theme.colors.text};
+`;
+export const Resendpin = styled(Animated.Text)<TextProps>`
+  font-family: ${({ theme }) => theme.typography.fontFamily.medium};
+  font-size: ${({ theme }) => theme.typography.sizes.font14}px;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const HorizontalView = styled(Animated.View)`

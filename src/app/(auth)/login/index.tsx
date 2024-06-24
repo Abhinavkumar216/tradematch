@@ -1,6 +1,8 @@
+import PrimaryButton from "@/src/components/PrimaryButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { router } from "expo-router";
 import React, { useContext, useState } from "react";
-import { ActivityIndicator, View } from "react-native";
+import { View } from "react-native";
 import {
   useAnimatedStyle,
   useSharedValue,
@@ -9,7 +11,6 @@ import {
 import { ThemeContext } from "styled-components/native";
 import {
   AnimatedImage,
-  ButtonText,
   Container,
   CountryCode,
   HorizontalView,
@@ -18,9 +19,7 @@ import {
   LogoHeading,
   LogoSubHeading,
   ReferButton,
-  StyledButton,
 } from "./styles";
-import { router } from "expo-router";
 
 const Login = () => {
   const themeContext = useContext(ThemeContext);
@@ -31,18 +30,20 @@ const Login = () => {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [isReferActive, setIsReferActive] = useState<boolean>(false);
+  const [mobile, setMobile] = useState<string>("");
+  const [referCode, setReferCode] = useState<string>("");
 
   const onStarted = () => {
     setLoading(true);
     setTimeout(() => {
-      router.push("/verify");
+      router.push({ pathname: "/verify", params: { mobile } });
       setLoading(false);
     }, 1500);
   };
 
   const handlePress = () => {
     opacity.value = 1;
-    translateY.value = -20;
+    translateY.value = -30;
     buttonOpacity.value = 0;
     setIsReferActive(true);
   };
@@ -89,6 +90,9 @@ const Login = () => {
           cursorColor={themeContext?.colors?.text + 80}
           maxLength={10}
           autoFocus
+          value={mobile}
+          editable={!loading}
+          onChangeText={setMobile}
         />
       </InputWrapper>
       <ReferButton style={buttonAnimatedStyles} onPress={handlePress}>
@@ -116,19 +120,15 @@ const Login = () => {
           cursorColor={themeContext?.colors?.text + 80}
           maxLength={10}
           editable={isReferActive}
+          value={referCode}
+          onChangeText={setReferCode}
         />
       </InputWrapper>
       <View style={{ flex: 1 }} />
       <LogoSubHeading style={{ fontSize: 12 }}>
         By Proceeding, I agree to the T&C and Privacy Policy.
       </LogoSubHeading>
-      <StyledButton onPress={onStarted}>
-        {loading ? (
-          <ActivityIndicator size={"small"} color={"#fff"} />
-        ) : (
-          <ButtonText>Continue</ButtonText>
-        )}
-      </StyledButton>
+      <PrimaryButton loading={loading} onPress={onStarted} text="Continue" />
     </Container>
   );
 };

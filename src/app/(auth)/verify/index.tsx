@@ -1,30 +1,33 @@
-import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
+import PrimaryButton from "@/src/components/PrimaryButton";
 import React, { useContext, useState } from "react";
+import { View } from "react-native";
+import { ThemeContext } from "styled-components/native";
+import Pininput from "./components/Pininput";
+import ResendText from "./components/ResendText";
+import useTimer from "./hooks/useTimer";
 import {
+  AnimatedImage,
   Container,
+  HorizontalView,
   LogoHeading,
   LogoSubHeading,
-  HorizontalView,
-  AnimatedImage,
-  StyledButton,
-  ButtonText,
 } from "./styles";
-import { ThemeContext } from "styled-components/native";
-import { Font } from "@/src/constants/theme";
-import Pininput from "./components/Pininput";
+import { useLocalSearchParams } from "expo-router";
+
+const INITIAL_TIMEOUT_IN_SECONDS = 10;
+const RESEND_TIMEOUT_IN_SECONDS = 10;
 
 const Verify = () => {
-  const themeContext = useContext(ThemeContext);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [code, setcode] = useState("");
+  const { mobile } = useLocalSearchParams<{ mobile: string }>();
+  const [loading, setLoading] = useState(false);
+  const [timer, setTimer] = useTimer(INITIAL_TIMEOUT_IN_SECONDS);
 
-  const onStarted = () => {
+  const onPress = () => {
     setLoading(true);
-    setTimeout(() => {
-      // router.push("/signin");
-      setLoading(false);
-    }, 1500);
+    setTimeout(() => setLoading(false), 1500);
   };
+
+  const resendOTP = () => setTimer(RESEND_TIMEOUT_IN_SECONDS);
 
   return (
     <Container>
@@ -35,21 +38,15 @@ const Verify = () => {
         <View>
           <LogoHeading>Hey, Guest</LogoHeading>
           <LogoSubHeading>
-            Just one quick check to make sure you’re really you. We’ve sent a
-            one-time password (OTP) to your registered mobile number 9504141640.
+            We've sent a one-time password (OTP) to your registered mobile
+            number +91 {mobile ?? "1234567890"}.
           </LogoSubHeading>
         </View>
       </HorizontalView>
       <Pininput />
-      <LogoSubHeading>Resend new OTP in 00:29 seconds </LogoSubHeading>
+      <ResendText onPress={resendOTP} timer={timer} />
       <View style={{ flex: 1 }} />
-      <StyledButton onPress={onStarted}>
-        {loading ? (
-          <ActivityIndicator size={"small"} color={"#fff"} />
-        ) : (
-          <ButtonText>Continue</ButtonText>
-        )}
-      </StyledButton>
+      <PrimaryButton loading={loading} onPress={onPress} text="Continue" />
     </Container>
   );
 };
