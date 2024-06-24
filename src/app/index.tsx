@@ -4,9 +4,11 @@ import Splash from "./splash";
 import Start from "./(auth)/start";
 import Login from "./(auth)/login";
 import Verify from "./(auth)/verify";
+import Name from "./(auth)/Name";
+import Avatar from "./(auth)/avatar";
 
 const Index = () => {
-  return <Verify/>
+  return <Avatar/>
 };
 
 export default Index;

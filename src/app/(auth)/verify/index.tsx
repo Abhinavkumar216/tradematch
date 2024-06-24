@@ -46,7 +46,7 @@ const Verify = () => {
       <Pininput />
       <ResendText onPress={resendOTP} timer={timer} />
       <View style={{ flex: 1 }} />
-      <PrimaryButton loading={loading} onPress={onPress} text="Continue" />
+      <PrimaryButton loading={loading} onPress={onPress} text="Confirm OTP" />
     </Container>
   );
 };

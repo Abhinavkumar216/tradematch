@@ -3,22 +3,21 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { router } from "expo-router";
 import React, { useContext, useState } from "react";
 import { View } from "react-native";
-import {
+import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
 import { ThemeContext } from "styled-components/native";
+import Input from "./components/Input";
 import {
   AnimatedImage,
   Container,
   CountryCode,
   HorizontalView,
-  InputStyle,
-  InputWrapper,
   LogoHeading,
   LogoSubHeading,
-  ReferButton,
+  ReferButton
 } from "./styles";
 
 const Login = () => {
@@ -78,23 +77,21 @@ const Login = () => {
         </LogoSubHeading>
       </View>
 
-      <InputWrapper>
+      <Input
+        loading={loading}
+        value={mobile}
+        onChange={setMobile}
+        keyboardType="phone-pad"
+        maxLength={10}
+        placeholder="Mobile Number"
+        autoFocus={true}
+        dataDetectorTypes={"phoneNumber"}
+      >
         <View style={{ padding: 18 }}>
           <CountryCode>+91</CountryCode>
         </View>
-        <InputStyle
-          placeholderTextColor={themeContext?.colors?.text + 80}
-          placeholder="Mobile Number"
-          dataDetectorTypes={"phoneNumber"}
-          keyboardType="phone-pad"
-          cursorColor={themeContext?.colors?.text + 80}
-          maxLength={10}
-          autoFocus
-          value={mobile}
-          editable={!loading}
-          onChangeText={setMobile}
-        />
-      </InputWrapper>
+      </Input>
+
       <ReferButton style={buttonAnimatedStyles} onPress={handlePress}>
         <Ionicons
           name="chevron-forward"
@@ -103,29 +100,29 @@ const Login = () => {
         />
         <LogoSubHeading> Have a Referral Code?</LogoSubHeading>
       </ReferButton>
-
-      <InputWrapper style={imageAnimatedStyles}>
-        <View style={{ paddingHorizontal: 20 }}>
-          <Ionicons
-            name="person"
-            size={21}
-            color={themeContext?.colors?.text + 80}
-          />
-        </View>
-        <InputStyle
-          placeholderTextColor={themeContext?.colors?.text + 80}
-          placeholder="Referral Code"
-          dataDetectorTypes={"trackingNumber"}
-          keyboardType="default"
-          cursorColor={themeContext?.colors?.text + 80}
-          maxLength={10}
-          editable={isReferActive}
+      <Animated.View style={imageAnimatedStyles}>
+        <Input
+          loading={loading}
           value={referCode}
-          onChangeText={setReferCode}
-        />
-      </InputWrapper>
+          onChange={setReferCode}
+          keyboardType={"default"}
+          maxLength={10}
+          placeholder="Referral Code"
+          autoFocus={false}
+          dataDetectorTypes={"trackingNumber"}
+          editable={isReferActive}
+        >
+          <View style={{ padding: 20 }}>
+            <Ionicons
+              name="person"
+              size={21}
+              color={themeContext?.colors?.text + 80}
+            />
+          </View>
+        </Input>
+      </Animated.View>
       <View style={{ flex: 1 }} />
-      <LogoSubHeading style={{ fontSize: 12 }}>
+      <LogoSubHeading style={{ fontSize: 12 , marginBottom:10}}>
         By Proceeding, I agree to the T&C and Privacy Policy.
       </LogoSubHeading>
       <PrimaryButton loading={loading} onPress={onStarted} text="Continue" />
