@@ -7,10 +7,11 @@ import {
   LogoHeading,
   LogoSubHeading,
 } from "./styles";
-import {
+import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
+  FadeIn,
 } from "react-native-reanimated";
 import Constants from "expo-constants";
 import { ResizeMode, Video } from "expo-av";
@@ -29,7 +30,7 @@ const Tutorial = () => {
   };
 
   const imageAnimatedStyles = useAnimatedStyle(() => ({
-    top: withTiming(translateY.value, { duration: 2000 }),
+    top: withTiming(translateY.value, { duration: 1000 }),
   }));
 
   useEffect(() => {
@@ -49,17 +50,20 @@ const Tutorial = () => {
           <LogoSubHeading> Trade For Every Match</LogoSubHeading>
         </View>
       </HorizontalView>
-      <View style={{ position: "absolute", top: height / 5 }}>
+      <Animated.View
+        entering={FadeIn.delay(2000).duration(1000)}
+        style={{ position: "absolute", top: height / 5 }}
+      >
         <LogoHeading>Master the Game & Score Big Rewards</LogoHeading>
         <Video
           resizeMode={ResizeMode.CONTAIN}
-          //   isMuted
+          isMuted
           isLooping
           shouldPlay
           source={{ uri: VIDEO_SOURCE }}
           style={styles.video}
         />
-      </View>
+      </Animated.View>
       <View style={{ flex: 1 }} />
       <PrimaryButton loading={false} text="Let's Start" onPress={() => {}} />
     </Container>
@@ -73,5 +77,6 @@ const styles = StyleSheet.create({
     width: width - 32,
     aspectRatio: 16 / 9,
     marginVertical: 25,
+    borderRadius: 12,
   },
 });

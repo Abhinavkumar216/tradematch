@@ -9,7 +9,7 @@ import Avatar from "./(auth)/avatar";
 import Success from "./(auth)/success";
 
 const Index = () => {
-  return <Success/>
+  return <Splash />;
 };
 
 export default Index;

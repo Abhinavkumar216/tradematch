@@ -25,6 +25,7 @@ export default function RootLayout() {
     [Font.Thin]: require("../assets/fonts/Poppins-Thin.ttf"),
   });
 
+
   const theme = useMemo(() => {
     if (!colorScheme) return DefaultTheme;
     return colorScheme === "dark" ? DarkTheme : LightTheme;

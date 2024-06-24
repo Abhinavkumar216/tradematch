@@ -43,6 +43,7 @@ const Splash = () => {
     }, 3000);
   }, []);
 
+
   return (
     <Container>
       <AnimatedImage

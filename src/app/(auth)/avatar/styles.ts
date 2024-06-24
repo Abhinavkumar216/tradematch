@@ -42,8 +42,8 @@ export const AnimatedAvatar = styled(Animated.Image)`
   width: 150px;
   height: 150px;
   border-radius: 75px;
-  border-width: 2px;
-  border-color: ${(props) => props.theme.colors.primary};
+  border-width: 0px;
+  border-color: ${(props) => props.theme.colors.text+50};
   align-self: center;
   margin: 30px 0px;
 `;

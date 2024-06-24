@@ -21,18 +21,18 @@ export const AnimatedImage = styled(Animated.Image)`
   position: absolute;
 `;
 
-export const Heading = styled.Text<TextProps>`
+
+export const Heading = styled.Text`
   font-size: ${({ theme }) => theme.typography.sizes.font24}px;
   color: ${({ theme }) => theme.colors.text};
-  fontfamily: ${({ theme }) => theme.typography.fontFamily.bold};
+  font-family: ${({ theme }) => theme.typography.fontFamily.semiBold};
 `;
 
-export const SubHeading = styled.Text<TextProps>`
+export const SubHeading = styled.Text`
   font-family: ${({ theme }) => theme.typography.fontFamily.light};
-  font-size: ${({ theme }) => theme.typography.sizes.font16}px;
+  font-size: ${({ theme }) => theme.typography.sizes.font14}px;
   color: ${({ theme }) => theme.colors.text};
 `;
-
 export const HorizontalView = styled(Animated.View)`
   margin-right: -65px;
 `;
