@@ -5,12 +5,13 @@ import { View } from "react-native";
 import { ThemeContext } from "styled-components/native";
 import Input from "./components/Input";
 import {
-    AnimatedImage,
-    Container,
-    HorizontalView,
-    LogoHeading,
-    LogoSubHeading,
+  AnimatedImage,
+  Container,
+  HorizontalView,
+  LogoHeading,
+  LogoSubHeading,
 } from "./styles";
+import { router } from "expo-router";
 
 const Name = () => {
   const themeContext = useContext(ThemeContext);
@@ -21,7 +22,7 @@ const Name = () => {
   const onStarted = () => {
     setLoading(true);
     setTimeout(() => {
-      //   router.push({ pathname: "/verify", params: { mobile } });
+      router.push({ pathname: "/avatar" });
       setLoading(false);
     }, 1500);
   };

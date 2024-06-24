@@ -12,7 +12,7 @@ import {
   LogoHeading,
   LogoSubHeading,
 } from "./styles";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 
 const INITIAL_TIMEOUT_IN_SECONDS = 10;
 const RESEND_TIMEOUT_IN_SECONDS = 10;
@@ -24,7 +24,10 @@ const Verify = () => {
 
   const onPress = () => {
     setLoading(true);
-    setTimeout(() => setLoading(false), 1500);
+    setTimeout(() => {
+      router.push("/name");
+      setLoading(false), 1500;
+    });
   };
 
   const resendOTP = () => setTimer(RESEND_TIMEOUT_IN_SECONDS);
