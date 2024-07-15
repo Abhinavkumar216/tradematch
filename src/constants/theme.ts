@@ -59,6 +59,7 @@ export const DarkTheme: DefaultThemeProps = {
   ...DefaultConfigs,
   dark: true,
   colors: {
+    secbackground:"#222232",
     background: "#101924",
     primary: "#386CFD",
     success: "#00CA48",
@@ -73,7 +74,8 @@ export const LightTheme: DefaultThemeProps = {
   ...DefaultConfigs,
   dark: false,
   colors: {
-    background: "#ffffff",
+    background:"#f4f4f4",
+    secbackground: "#ffffff",
     primary: "#386CFD",
     success: "#00CA48",
     danger: "#FF0B16",
