@@ -4,7 +4,7 @@ import { DefaultTheme as DefaultThemeProps } from "styled-components";
 import Constants from "expo-constants";
 
 export const CardContainer = styled.TouchableOpacity`
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) => props.theme.colors.secbackground};
   padding: 14px;
   margin-top: 15px;
   border-radius: 15px;

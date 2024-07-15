@@ -1,15 +1,10 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import Card from "./components/Card";
-import {
-  AnimatedImage,
-  Container,
-  HorizontalView,
-  ProfileImage,
-  LogoHeading,
-  LogoSubHeading,
-} from "./styles";
+import { StyleSheet } from "react-native";
 import Logo from "./components/Logo";
+import { Container, HorizontalView, ProfileImage } from "./styles";
+import Card from "./components/TopCard/Card";
+import TopCard from "./components/WarningCard/TopCard";
+import Menu from "./components/CenterMenu/Menu";
 
 const Home = () => {
   return (
@@ -20,10 +15,12 @@ const Home = () => {
           source={require("@/src/assets/images/avatars/avatar2.jpeg")}
         />
       </HorizontalView>
+      {/* Warning card */}
+      {/* <TopCard/> */}
       {/* Matches */}
       <Card />
-      {/* Matches */}
-
+      {/* CenterMenu */}
+      <Menu />
     </Container>
   );
 };
