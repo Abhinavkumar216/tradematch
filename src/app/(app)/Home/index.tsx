@@ -2,9 +2,10 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import Logo from "./components/Logo";
 import { Container, HorizontalView, ProfileImage } from "./styles";
-import Card from "./components/TopCard/Card";
-import TopCard from "./components/WarningCard/TopCard";
-import Menu from "./components/CenterMenu/Menu";
+import Card from "./components/TopCard/TopCard";
+import TopCard from "./components/WarningCard/WarningCard";
+import Menu from "./components/CenterMenu/CenterMenu";
+import ScheduledMatch from "./components/ScheduledMatch/ScheduledMatch";
 
 const Home = () => {
   return (
@@ -21,6 +22,9 @@ const Home = () => {
       <Card />
       {/* CenterMenu */}
       <Menu />
+      {/* Stocks Movements */}
+      {/* Scheduled Matches */}
+      <ScheduledMatch/>
     </Container>
   );
 };
