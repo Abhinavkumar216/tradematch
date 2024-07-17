@@ -7,7 +7,7 @@ import Verify from "./(auth)/verify";
 import Name from "./(auth)/name";
 import Avatar from "./(auth)/avatar";
 import Success from "./(auth)/success";
-import Home from "./(app)/Home";
+import Home from "./(app)/(homeroute)/Home";
 
 const Index = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
