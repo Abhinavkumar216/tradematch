@@ -59,14 +59,15 @@ export const DarkTheme: DefaultThemeProps = {
   ...DefaultConfigs,
   dark: true,
   colors: {
-    secbackground:"#1F2033",
-    background: "#101924",
+    secbackground:"#222232",
+    background: "#181928",
     primary: "#386CFD",
     success: "#00CA48",
     danger: "#FF0B16",
     warning: "#FF9700",
-    secondaryBackground: "#9278FD",
-    text: "#F4F4F4",
+    secondary: "#9278FD",
+    text: "#FFFFFF",
+    secText:"#91959a"
   },
 };
 
@@ -80,8 +81,9 @@ export const LightTheme: DefaultThemeProps = {
     success: "#00CA48",
     danger: "#FF0B16",
     warning: "#FF9700",
-    secondaryBackground: "#9278FD",
-    text: "#101924",
+    secondary: "#9278FD",
+    text: "#181928",
+    secText:"#222232",
   },
 };
 

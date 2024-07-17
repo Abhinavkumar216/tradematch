@@ -6,7 +6,6 @@ import Constants from "expo-constants";
 export const CardContainer = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.colors.secbackground};
   padding: 14px;
-  margin-top: 15px;
   border-radius: 15px;
   border-width: 2px;
   border-color: ${(props) => props.theme.colors.secbackground};
@@ -18,8 +17,8 @@ export const CardHeading = styled.Text`
   font-family: ${({ theme }) => theme.typography.fontFamily.medium};
 `;
 export const CardHeadingAlt = styled.Text`
-text-align: center;
-  font-size: ${({ theme }) => theme.typography.sizes.font10}px;
+  text-align: center;
+  font-size: ${({ theme }) => theme.typography.sizes.font12}px;
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.typography.fontFamily.medium};
 `;
@@ -27,7 +26,7 @@ text-align: center;
 export const CardHeadingSuccess = styled.Text`
   font-size: ${({ theme }) => theme.typography.sizes.font14}px;
   color: ${({ theme }) => theme.colors.success};
-  font-family: ${({ theme }) => theme.typography.fontFamily.medium};
+  font-family: ${({ theme }) => theme.typography.fontFamily.semiBold};
 `;
 
 export const CardSubHeading = styled.Text`

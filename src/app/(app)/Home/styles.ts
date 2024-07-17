@@ -10,10 +10,9 @@ export interface TextProps {
   fontWeight?: keyof DefaultThemeProps["typography"]["fontFamily"];
 }
 
-export const Container = styled.View`
-  flex: 1;
+export const Container = styled.ScrollView`
   background-color: ${(props) => props.theme.colors.background};
-  padding-top: ${statusBarHeight + 10}px;
+  padding-top: 10px;
   padding-left: 16px;
   padding-right: 16px;
 `;

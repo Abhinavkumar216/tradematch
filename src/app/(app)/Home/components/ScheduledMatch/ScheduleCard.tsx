@@ -1,5 +1,5 @@
 import { Feather } from "@expo/vector-icons";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { View } from "react-native";
 import { ThemeContext } from "styled-components";
 import {
@@ -10,6 +10,7 @@ import {
   CountryName,
   CouuntryWrap,
   HorizontalView,
+  ScheduledValue,
   TimingHeading,
   TimingValue,
 } from "./styles";
@@ -46,10 +47,20 @@ const ScheduleCard = () => {
 export default ScheduleCard;
 
 const Timing = () => {
-  return (
-    <View>
-      <TimingHeading>Starting at</TimingHeading>
-      <TimingValue>09 : 30 : 45</TimingValue>
-    </View>
-  );
+  const [isSameday, setIsSameday] = useState(false);
+  if (isSameday) {
+    return (
+      <View>
+        <TimingHeading>Starting at</TimingHeading>
+        <TimingValue>09 : 30 : 45</TimingValue>
+      </View>
+    );
+  } else {
+    return (
+      <View>
+        <ScheduledValue>Scheduled for</ScheduledValue>
+        <TimingHeading>15 July 2024</TimingHeading>
+      </View>
+    );
+  }
 };

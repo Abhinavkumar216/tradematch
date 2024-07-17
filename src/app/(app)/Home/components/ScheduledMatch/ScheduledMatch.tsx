@@ -19,6 +19,8 @@ const ScheduledMatch = () => {
       <ScheduleCard/>
       <ScheduleCard/>
       <ScheduleCard/>
+      <ScheduleCard/>
+      <ScheduleCard/>
     </CardWrapper>
   );
 };

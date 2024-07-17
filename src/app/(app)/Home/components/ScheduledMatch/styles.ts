@@ -16,15 +16,15 @@ export const CardContainer = styled.TouchableOpacity`
 
 export const Menu = styled(GlobalText)`
   font-size: ${({ theme }) => theme.typography.sizes.font16}px;
-  font-family: ${({ theme }) => theme.typography.fontFamily.medium};
+  font-family: ${({ theme }) => theme.typography.fontFamily.semiBold};
 `;
 
 export const CardHeading = styled(GlobalText)`
-  font-family: ${({ theme }) => theme.typography.fontFamily.light};
+  font-family: ${({ theme }) => theme.typography.fontFamily.semiBold};
 `;
 
 export const CountryName = styled(GlobalText)`
-font-family: ${({ theme }) => theme.typography.fontFamily.medium};
+font-family: ${({ theme }) => theme.typography.fontFamily.regular};
 `;
 
 export const TimingWrap = styled.View
@@ -35,6 +35,11 @@ text-align: right;
 export const TimingValue = styled(GlobalText)`
   color: ${({ theme }) => theme.colors.warning};
   font-family: ${({ theme }) => theme.typography.fontFamily.medium};
+  text-align: right;
+`;
+export const ScheduledValue = styled(GlobalText)`
+  color: ${({ theme }) => theme.colors.secText};
+  font-family: ${({ theme }) => theme.typography.fontFamily.regular};
   text-align: right;
 `;
 
