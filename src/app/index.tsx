@@ -19,6 +19,8 @@ const Index = () => {
   }
 };
 
+
+
 export default Index;
 
 const styles = StyleSheet.create({});
