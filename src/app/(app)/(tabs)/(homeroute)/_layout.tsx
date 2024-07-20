@@ -6,6 +6,7 @@ const HomeRoute = () => {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="home" />
+      <Stack.Screen name="matches/index" />
     </Stack>
   );
 };

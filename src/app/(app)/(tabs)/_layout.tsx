@@ -17,12 +17,12 @@ const TabsLayout = () => {
             backgroundColor: themeContext?.colors?.secbackground,
             borderTopWidth: 0,
           },
-          tabBarShowLabel:false,
+          tabBarShowLabel: false,
           tabBarActiveTintColor: themeContext?.colors.primary,
           tabBarInactiveBackgroundColor: themeContext?.colors?.secbackground,
           tabBarActiveBackgroundColor: themeContext?.colors?.secbackground,
-          
         }}
+        initialRouteName="(homeroute)"
       >
         <Tabs.Screen
           name="(homeroute)"

@@ -10,6 +10,7 @@ import {
 } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemeContext } from "styled-components/native";
+import { Link } from "expo-router";
 
 const Menu = () => {
   const themeContext = useContext(ThemeContext);
@@ -18,6 +19,7 @@ const Menu = () => {
     <View>
       <HorizontalLine />
       <MenuContainer>
+        <Link href={'matches'} asChild>
         <MenuWraper>
           <Ionicons
             name="calendar-outline"
@@ -26,6 +28,7 @@ const Menu = () => {
           />
           <CardSubHeading>Scheduled</CardSubHeading>
         </MenuWraper>
+        </Link>
         <Saperator/>
         <MenuWraper>
           <Ionicons
