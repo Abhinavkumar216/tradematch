@@ -23,6 +23,7 @@ const MatchTopTabs = () => {
   return (
     <MatchTopTabsLayout
       screenOptions={{
+        swipeEnabled:false,
         animationEnabled: true,
         tabBarBounces: true,
         tabBarIndicatorContainerStyle: {
@@ -43,11 +44,12 @@ const MatchTopTabs = () => {
       }}
     >
       <MatchTopTabsLayout.Screen
-        name="live/index"
+        name="live"
         options={{ title: "Live" }}
       />
       <MatchTopTabsLayout.Screen
         name="upcoming/index"
+        
         options={{ title: "Upcoming" }}
       />
       <MatchTopTabsLayout.Screen

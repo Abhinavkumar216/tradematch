@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components/native";
 import { DarkTheme, DefaultTheme, Font, LightTheme } from "../constants/theme";
 import { store } from "../redux/Store";
+import { StatusBar } from "expo-status-bar";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -24,7 +25,6 @@ export default function RootLayout() {
     [Font.Light]: require("../assets/fonts/Poppins-Light.ttf"),
     [Font.Thin]: require("../assets/fonts/Poppins-Thin.ttf"),
   });
-
 
   const theme = useMemo(() => {
     if (!colorScheme) return DefaultTheme;
@@ -44,9 +44,14 @@ export default function RootLayout() {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <Stack screenOptions={{ headerShown: false }}>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            statusBarColor: theme.colors.background,
+          }}
+        >
           {/* <Stack.Screen name="(auth)" /> */}
-          <Stack.Screen name="(app)"/>
+          <Stack.Screen name="(app)" />
         </Stack>
       </Provider>
     </ThemeProvider>

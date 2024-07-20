@@ -1,16 +1,13 @@
+import { Stack } from "expo-router";
 import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
-import Logo from "./components/Logo";
-import { Container, HorizontalView, ProfileImage } from "./styles";
-import Card from "./components/TopCard/TopCard";
-import TopCard from "./components/WarningCard/WarningCard";
-import Menu from "./components/CenterMenu/CenterMenu";
-import ScheduledMatch from "./components/ScheduledMatch/ScheduledMatch";
-import TopStocks from "./components/TopStocks/TopStocks";
-import TopGainers from "./components/TopStocks/TopGainers";
-import { Stack } from "expo-router";
 import { ThemeContext } from "styled-components/native";
+import Menu from "./components/CenterMenu/CenterMenu";
+import Logo from "./components/Logo";
+import ScheduledMatch from "./components/ScheduledMatch/ScheduledMatch";
+import Card from "./components/TopCard/TopCard";
 import TabView from "./components/TopStocks/TabView";
+import { Container, ProfileImage } from "./styles";
 
 const Home = () => {
   const themeContext = useContext(ThemeContext)
@@ -19,7 +16,7 @@ const Home = () => {
       <Stack.Screen
         options={{
           statusBarColor: themeContext?.colors?.background,
-          // statusBarStyle:'auto',
+          statusBarStyle:'auto',
           headerShown: true,
           headerTitle:"",
           headerShadowVisible:false,
